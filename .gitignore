@@ -1,4 +1,2 @@
-venv/
-_pycache__/
-*.pyc
-stop
+venv
+*__pycache__*

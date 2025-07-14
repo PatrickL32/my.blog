@@ -6,4 +6,7 @@ def home(request):
 def about(request):
     return render(request, 'pages/about.html')
 
+def search(request):
+    return render(request, 'pages/search.html')
+
 # Create your views here.
