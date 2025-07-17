@@ -58,8 +58,8 @@ def get_context_data(self,**kwargs):
     context = super().get_context_data(**kwargs)
     draft = Status.objects.get(name="draft")
     context["title"]="Draft"
-    context["post_list"] =(
-        Post.objects
+    context["post_list"] = (
+        Post.objects.all()
         .filter(status= draft)
         .filter(author=self.request.user)
         .order_by("created_on").reverse()
@@ -74,8 +74,8 @@ def get_caught_data(self,**kwargs):
     context= super().get_caught_data(**kwargs)
     archived = Status.objects.get(name="archived")
     context["title"] = "Archived"
-    context=["post_list"] =(
-        Post.objects
+    context["post_list"] = (
+        Post.objects.all()
         .filter(status=archived)
         .order_by("created_on").reverse()
     )
