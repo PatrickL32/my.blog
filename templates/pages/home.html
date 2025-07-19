@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% load static %}{% block content %}
     <h1> Welcome to the Home Page!</h1>
     <p> This is the home page of my blog project.</p>
+    <img src="{% static 'img/monster-white-zero-sugar.jpg' %}" alt="Monster Energy Drink" class="img-fluid">
 {% endblock content %}
