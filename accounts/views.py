@@ -1,8 +1,16 @@
-from django.views.generic import CreateView
-from django.contrib.auth.forms import UserCreationForm
+# accounts/views.py
+
 from django.urls import reverse_lazy
+from django.views.generic import CreateView
+from .forms import CustomUserCreationForm
 
 class SignUpView(CreateView):
-    template_name = "registration/sigup.html"
-    form_class = UserCreationForm
-    Success_url = reverse_lazy("login")
+    # Use your custom form, not the default one
+    form_class = CustomUserCreationForm
+    
+    # Redirect to the login page after a successful signup
+    success_url = reverse_lazy('login')
+    
+    # Specify the template to use
+    template_name = 'registration/signup.html'
+

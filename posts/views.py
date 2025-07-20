@@ -24,7 +24,7 @@ def form_valid(self,form):
     form.instance.author = self.request.user
     return super().form_valid(form)
 
-class PostDetailView(DetailView):
+class PostDetailView(UserPassesTestMixin,DetailView):
     templete_name = "posts/detail.html"
     model = Post
 
@@ -39,7 +39,14 @@ class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
 
 def test_func(self):
     post = self.get_object()
-    return post.author==self.request.user
+    if post.staus.name== "published":
+        return True
+    elif post.status.name =="archived" and self.request.user.is_authenticated:
+        return True
+    elif post.status.name =="draft" and self.request.user== post.author:
+        return True
+    else:
+        False
 
 class PostDeleteView(DeleteView):
     template_name ="posts/list.html"
@@ -79,4 +86,5 @@ def get_caught_data(self,**kwargs):
         .filter(status=archived)
         .order_by("created_on").reverse()
     )
+    
     return context
