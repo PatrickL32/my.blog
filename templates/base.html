@@ -17,14 +17,15 @@
     <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-        <a class="nav-link" href="{% url 'home' %}">Home</a>
-        <a class = "nav-link" href="{% url 'list' %}">Post</a>
-        <a class = "nav-link" href="{% url 'new' %}"> New Post </a>
-        <a class = "nav-link"href="{% url 'signup'%}">Sign up</a>
-        <a clas = "nav-link" href="{%url 'about'  %}">About</a>
-
-        </div>
+<div class="navbar-nav">
+    <a class="nav-link" href="{% url 'home' %}">Home</a>
+    <a class="nav-link" href="{% url 'list' %}">Post</a>
+    <a class="nav-link" href="{% url 'new' %}">New post</a>
+    <a class="nav-link" href="{% url 'login' %}">Log in</a>
+    <a class="nav-link" href="{% url 'signup' %}">Sign up</a>
+    <a class="nav-link" href="{% url 'about' %}">About</a>
+</div>
+        
         <form class="d-flex ms-auto" role="search" method="get" action="{% url 'search' %}">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
         <button class="btn btn-outline-success" type="submit">Search</button>
