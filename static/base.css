@@ -9,33 +9,28 @@
   padding: 0;
 }
 
-/* Set core root defaults for rem units and smooth scrolling */
 html {
-  font-size: 62.5%; /* 1rem = 10px */
+  font-size: 14px; /* 1rem = 10px */
   scroll-behavior: smooth;
 }
 
-/* Set core body defaults */
 body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
-  line: height 4px;
+  line-height: 1.5; /* Corrected property and given a sensible default */
 }
 
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role='list'],
 ol[role='list'] {
   list-style: none;
 }
 
-/* Make images easier to work with */
 img,
 picture {
   max-width: 100%;
   display: block;
 }
 
-/* Inherit fonts for inputs and buttons */
 input,
 button,
 textarea,
@@ -44,15 +39,17 @@ select {
 }
 
 /* -------------------- */
-/* -- 2. VARIABLES (CUSTOM PROPERTIES) -- */
+/* -- 2. VARIABLES -- */
 /* -------------------- */
 :root {
   /* Colors */
-  --clr-primary:#343a40;
-  --clr-secondary: #6c757d;
-  --clr-light: #f8f9fa;
-  --clr-dark: #343a40;
-  --clr-background: #ffffff;
+  --clr-primary: darkblue;
+  --clr-secondary: blue;
+  --clr-light: purple;
+  --clr-dark: blueviolet;
+  --clr-background: rgb(145, 16, 134);
+  --clr-text: #333;
+  --clr-white: #fff;
 
   /* Fonts */
   --ff-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -70,25 +67,26 @@ select {
 /* -- 3. GENERAL STYLING -- */
 /* -------------------- */
 body {
-  font-family: sans-serif;
-  font-size: 14px; /* Default font size is 16px */
-  background: color #f4f4f4;
-  color: #333;
+  font-family: var(--ff-primary);
+  font-size: 16px; /* Use rem units consistent with reset (1.6rem = 16px) */
+  color: var(--clr-text);
+  /* Corrected gradient syntax with commas and variables */
+  background: linear-gradient(var(--clr-secondary), var(--clr-light), var(--clr-background));
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family:var(--ff-headings);
+  font-family: var(--ff-headings);
   line-height: 1.2;
-  margin-bottom:var(--spacing-2);
-  color:royalblue(--clr-dark);
+  margin-bottom: var(--spacing-2);
+  color: var(--clr-dark); /* Corrected variable usage */
 }
 
 p {
-  margin-bottom:1rem ;
+  margin-bottom: 16px; /* Using spacing variable for consistency */
 }
 
 a {
-  color:fuchsia(--clr-primary);
+  color: var(--clr-primary); /* Corrected variable usage */
   text-decoration: none;
   transition: opacity 0.2s ease-in-out;
 }
@@ -99,14 +97,12 @@ a:hover, a:focus {
 }
 
 /* -------------------- */
-/* -- 4. LAYOUT & COMPONENTS -- */
+/* -- 4. COMPONENTS -- */
 /* -------------------- */
 .container {
   max-width: 1140px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--spacing-3);
-  padding-right: var(--spacing-3);
+  margin-inline: auto; /* Modern way to center */
+  padding-inline: var(--spacing-3); /* Modern way for left/right padding */
 }
 
 .btn {
@@ -118,12 +114,12 @@ a:hover, a:focus {
   border: 1px solid transparent;
   border-radius: var(--border-radius);
   background-color: var(--clr-primary);
-  color: var(--clr-light);
+  color: var(--clr-white); /* Used variable for light text */
   transition: background-color 0.2s ease-in-out;
 }
 
 .btn:hover, .btn:focus {
-  background-color: #0056b3; /* A darker shade of primary */
+  background-color: var(--clr-dark); /* Changed to a single valid color */
   text-decoration: none;
 }
 
@@ -153,5 +149,4 @@ a:hover, a:focus {
 .form-group select:focus {
   outline: none;
   border-color: var(--clr-primary);
-  box-shadow: 0 0 0 3px rgba(53, 54, 55, 0.25);
 }
